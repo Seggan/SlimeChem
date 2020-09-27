@@ -1,5 +1,7 @@
-package io.github.seggan.slimechem;
+package io.github.seggan.slimechem.classes;
 
+import io.github.seggan.slimechem.enums.Molecules;
+import io.github.seggan.slimechem.enums.PeriodicTable;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 
 import org.bukkit.inventory.ItemStack;

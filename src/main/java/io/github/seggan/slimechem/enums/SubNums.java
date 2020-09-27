@@ -1,4 +1,4 @@
-package io.github.seggan.slimechem;
+package io.github.seggan.slimechem.enums;
 
 public class SubNums {
 	

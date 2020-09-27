@@ -3,6 +3,10 @@ package io.github.seggan.slimechem;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.seggan.slimechem.classes.Combination;
+import io.github.seggan.slimechem.classes.Ingredient;
+import io.github.seggan.slimechem.enums.Molecules;
+import io.github.seggan.slimechem.enums.PeriodicTable;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.Item.CustomItem;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.Item.MenuItem;
 import me.mrCookieSlime.CSCoreLibPlugin.general.String.StringUtils;
