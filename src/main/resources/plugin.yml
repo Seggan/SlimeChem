@@ -1,0 +1,5 @@
+name: SlimeChem
+version: ${version}
+authors: [mrCookieSlime, Seggan]
+main: io.github.seggan.slimechem.main
+depend: [CS-CoreLib, Slimefun]
