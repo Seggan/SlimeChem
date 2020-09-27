@@ -1,4 +1,4 @@
-package me.mrCookieSlime.SlimeChem;
+package io.github.seggan.slimechem;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 

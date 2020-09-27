@@ -1,4 +1,4 @@
-package me.mrCookieSlime.SlimeChem;
+package io.github.seggan.slimechem;
 
 import java.util.Arrays;
 import java.util.List;
