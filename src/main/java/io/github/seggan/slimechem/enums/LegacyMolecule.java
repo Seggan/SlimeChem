@@ -1,6 +1,6 @@
 package io.github.seggan.slimechem.enums;
 
-public enum Molecules {
+public enum LegacyMolecule {
 	
 	WATER("H" + SubNums.TWO + "O"),
 	CARBON_DIOXIDE("CO" + SubNums.TWO),
@@ -41,7 +41,7 @@ public enum Molecules {
 	
 	String element;
 	
-	private Molecules(String formula) {
+	private LegacyMolecule(String formula) {
 		this.element = formula;
 	}
 

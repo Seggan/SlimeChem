@@ -1,6 +1,6 @@
 package io.github.seggan.slimechem.enums;
 
-public enum PeriodicTable {
+public enum Element {
 
 	HYDROGEN("H", 1),
 	CARBON("C", 6),
@@ -26,7 +26,7 @@ public enum PeriodicTable {
 	private final String element;
 	private final int atomicNumber;
 	
-	PeriodicTable(String formula, int number) {
+	Element(String formula, int number) {
 		this.element = formula;
 		atomicNumber = number;
 	}
