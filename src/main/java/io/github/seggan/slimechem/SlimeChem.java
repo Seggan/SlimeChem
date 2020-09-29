@@ -19,6 +19,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Cat;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import sun.awt.ModalExclude;
@@ -34,6 +35,10 @@ public class SlimeChem extends JavaPlugin implements SlimefunAddon {
 	public void onEnable() {
 
 		instance = this;
+
+		Categories.ELEMENTS.register();
+		Categories.MOLECULES.register();
+		Categories.SLIMECHEM.register();
 
 		registerMoleculesElements();
 		
