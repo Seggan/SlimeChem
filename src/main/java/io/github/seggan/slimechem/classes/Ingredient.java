@@ -1,17 +1,18 @@
 package io.github.seggan.slimechem.classes;
 
-import io.github.seggan.slimechem.enums.LegacyMolecule;
 import io.github.seggan.slimechem.enums.Element;
+import io.github.seggan.slimechem.enums.Molecule;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.inventory.ItemStack;
 
 
 public class Ingredient {
 	
-	Element element;
-	LegacyMolecule molecule;
-	int amount;
+	private final Element element;
+	private final Molecule molecule;
+	private final int amount;
 	
 	public Ingredient(Element element, int amount) {
 		this.molecule = null;
@@ -19,7 +20,7 @@ public class Ingredient {
 		this.amount = amount;
 	}
 	
-	public Ingredient(LegacyMolecule molecule, int amount) {
+	public Ingredient(Molecule molecule, int amount) {
 		this.molecule = molecule;
 		this.element = null;
 		this.amount = amount;
@@ -31,7 +32,7 @@ public class Ingredient {
 		this.amount = 1;
 	}
 
-	public Ingredient(LegacyMolecule molecule) {
+	public Ingredient(Molecule molecule) {
 		this.molecule = molecule;
 		this.element = null;
 		this.amount = 1;
@@ -44,9 +45,24 @@ public class Ingredient {
 	}
 	
 	public ItemStack getItem() {
-		if (molecule != null) return SlimefunItem.getByID("MOLECULE_" + molecule.toString()).getItem();
-		else if (element != null) return SlimefunItem.getByID("ELEMENT_" + element.toString()).getItem();
-		else return null;
+		if (isMolecule()) return SlimefunItem.getByID("MOLECULE_" + molecule.toString()).getItem();
+		else return SlimefunItem.getByID("ELEMENT_" + element.toString()).getItem();
+	}
+
+	public Molecule getMolecule() {
+		return molecule;
+	}
+
+	public Element getElement() {
+		return element;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public boolean isMolecule() {
+		return molecule != null;
 	}
 
 }

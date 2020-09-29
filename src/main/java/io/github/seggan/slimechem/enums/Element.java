@@ -23,20 +23,29 @@ public enum Element {
 	LEAD("Pb", 82),
 	URANIUM("U", 92);
 	
-	private final String element;
+	private final String formula;
 	private final int atomicNumber;
 	
 	Element(String formula, int number) {
-		this.element = formula;
+		this.formula = formula;
 		atomicNumber = number;
 	}
 
-	public String getName() {
-		return element;
+	public String getAbbr() {
+		return formula;
 	}
 
 	public int getAtomicNumber() {
 		return atomicNumber;
+	}
+
+	public static Element getByAbbr(String abbr) {
+		for (Element element : Element.values()) {
+			if (element.getAbbr().equals(abbr)) {
+				return element;
+			}
+		}
+		return null;
 	}
 
 }

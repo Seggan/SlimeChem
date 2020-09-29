@@ -1,6 +1,7 @@
 package io.github.seggan.slimechem;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.BiMap;
@@ -8,26 +9,33 @@ import com.google.common.collect.HashBiMap;
 import io.github.seggan.slimechem.classes.Combination;
 import io.github.seggan.slimechem.classes.Ingredient;
 import io.github.seggan.slimechem.enums.Element;
+import io.github.seggan.slimechem.enums.Molecule;
 import io.github.seggan.slimechem.lists.Categories;
+import io.github.seggan.slimechem.machines.Synthesizer;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.awt.ModalExclude;
 
 public class SlimeChem extends JavaPlugin implements SlimefunAddon {
 	
-	public static BiMap<ItemStack, Combination> combinations = HashBiMap.create();
-	public static Map<Element, SlimefunItemStack> elementStacks = new HashMap<>();
+	public static final BiMap<ItemStack, Combination> combinations = HashBiMap.create();
+	public static final Map<Element, SlimefunItemStack> elementStacks = new HashMap<>();
+	public static final Map<Molecule, SlimefunItemStack> moleculeStacks = new HashMap<>();
 	private static SlimeChem instance = null;
 	
 	@Override
 	public void onEnable() {
 
 		instance = this;
+
+		registerMoleculesElements();
 		
 //		RecipeType decomposer = new RecipeType(new CustomItem(Material.IRON_BLOCK, "&7Chemical Decomposer", 0));
 //
@@ -135,13 +143,33 @@ public class SlimeChem extends JavaPlugin implements SlimefunAddon {
 		for (Element element : Element.values()) {
 			SlimefunItemStack item = new SlimefunItemStack(
 				"ELEMENT_" + element.toString(),
-				Material.GLASS_BOTTLE,
-				Util.capitalize(element.toString().replace('_', ' ')),
+				Material.HONEY_BOTTLE,
+				ChatColor.GOLD + Util.capitalize(element.toString().replace('_', ' ')),
 				"",
-				"A basic chemical element"
+				ChatColor.GRAY + "A basic chemical element"
 			);
 			elementStacks.put(element, item);
 			new SlimefunItem(Categories.ELEMENTS, item, RecipeType.NULL, new ItemStack[0]).register(this);
+		}
+		for (Molecule molecule : Molecule.values()) {
+			SlimefunItemStack item = new SlimefunItemStack(
+				"MOLECULE_" + molecule.toString(),
+				Material.EXPERIENCE_BOTTLE,
+				ChatColor.GOLD + Util.capitalize(molecule.toString().replace('_', ' ')),
+				"",
+				ChatColor.GRAY + "A molecule composed of elements"
+			);
+			moleculeStacks.put(molecule, item);
+			ItemStack[] recipe = new ItemStack[9];
+			List<Ingredient> composition = molecule.getComposition();
+			int size = composition.size();
+			for (Ingredient ingredient : composition) {
+				recipe[composition.indexOf(ingredient)] = ingredient.getItem();
+			}
+			for (int i = 0; i < 9 - size; i++) {
+				recipe[i + size] = null;
+			}
+			new SlimefunItem(Categories.MOLECULES, item, Synthesizer.RECIPE_TYPE, recipe).register(this);
 		}
 	}
 

@@ -33,8 +33,4 @@ public class Synthesizer extends MultiBlockMachine {
     public void onInteract(Player player, Block block) {
 
     }
-
-    private boolean canCraft(Inventory inv) {
-        for (Combination combination : )
-    }
 }
