@@ -13,10 +13,10 @@ public final class Categories {
     );
     public static final Category ELEMENTS = new Category(
         new NamespacedKey(SlimeChem.getInstance(), "slimechem_elements"),
-        new CustomItem(Material.IRON_INGOT, "SlimeChem Elements")
+        new CustomItem(Material.HONEY_BOTTLE, "SlimeChem Elements")
     );
     public static final Category MOLECULES = new Category(
         new NamespacedKey(SlimeChem.getInstance(), "slimechem_molecules"),
-        new CustomItem(Material.DRIED_KELP, "SlimeChem Molecules")
+        new CustomItem(Material.EXPERIENCE_BOTTLE, "SlimeChem Molecules")
     );
 }

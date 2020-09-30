@@ -1,5 +1,6 @@
 package io.github.seggan.slimechem.classes;
 
+import io.github.seggan.slimechem.SlimeChem;
 import io.github.seggan.slimechem.enums.Element;
 import io.github.seggan.slimechem.enums.Molecule;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -45,8 +46,8 @@ public class Ingredient {
 	}
 	
 	public ItemStack getItem() {
-		if (isMolecule()) return SlimefunItem.getByID("MOLECULE_" + molecule.toString()).getItem();
-		else return SlimefunItem.getByID("ELEMENT_" + element.toString()).getItem();
+		if (isMolecule()) return SlimeChem.moleculeStacks.get(molecule);
+		else return SlimeChem.elementStacks.get(element);
 	}
 
 	public Molecule getMolecule() {
